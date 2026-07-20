@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Instrument+Sans:wght@400;600&display=swap');
+
+:root {
+  --cream: #f4f1ea;
+  --gold: #f1c40f;
+  --orange: #e67e22;
+  --red: #e74c3c;
+  --dark: #111111;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--cream);
+  font-family: 'Instrument Sans', sans-serif;
+  overflow: hidden;
+}
+
+/* Typography styles */
+h1, a, p {
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--cream);
+}
+
+h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+}
+
+a {
+  text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+}
+
+/* Container text handling for SplitText */
+.nav-word, .footer-line, .char {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Preloader setup */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 200; /* Raised to overlay navigation bar (100) on load */
+}
+
+.preloader-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark);
+}
+
+.preloader-revealer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: center;
+  clip-path: circle(0% at 50% 50%);
+  will-change: clip-path;
+}
+
+.revealer-1 { background-color: var(--gold); }
+.revealer-2 { background-color: var(--orange); }
+.revealer-3 { background-color: var(--red); }
+.revealer-4 { background-color: var(--dark); }
+
+/* Floating Elements Layout */
+.items {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 135px;
+  height: 135px;
+  transform: translate(-50%, -50%) scale(0);
+  will-change: transform, filter;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.preloader-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  width: 150px;
+}
+
+.preloader-logo img {
+  width: 100%;
+}
+
+/* Navigation Layout */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100; /* Raised to render above mobile-menu overlay (90) */
+}
+
+.nav-logo {
+  transform-origin: top left;
+  width: 50px;
+}
+
+.nav-logo img {
+  width: 100%;
+}
+
+.nav-items {
+  display: flex;
+  gap: 2rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 105;
+  padding: 0;
+}
+
+.hamburger .line {
+  display: block; /* Required so CSS transforms apply to span elements */
+  width: 100%;
+  height: 2px;
+  background-color: var(--cream);
+  will-change: transform;
+}
+
+/* Mobile Menu Fullscreen Overlay */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 90;
+  display: none;
+  overflow: hidden;
+}
+
+.mobile-menu-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark);
+  clip-path: circle(0% at 92% 50px);
+  will-change: clip-path;
+}
+
+.mobile-menu-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8rem 2rem 4rem 2rem;
+  z-index: 92;
+}
+
+.mobile-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-menu-items a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
+  overflow: hidden; /* Mask sliding text */
+}
+
+.mobile-menu-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-menu-footer p {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1.1rem;
+  opacity: 0.8;
+  font-weight: 400;
+  overflow: hidden; /* Mask sliding lines */
+}
+
+.menu-mobile-word, .menu-mobile-footer-line {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Hero Section Layout */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-header {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 80%;
+}
+
+.hero-image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Flush with viewport bottom */
+  width: 520px;
+  height: 560px;
+}
+
+.hero-image-background {
+  position: absolute;
+  bottom: -130px;
+  left: 50%;
+  margin-left: -250px;
+  width: 500px;
+  height: 500px;
+  background-color: var(--orange);
+  border-radius: 50%;
+  transform: scale(0);
+}
+
+.hero-image-bottle-wrapper {
+  position: absolute;
+  bottom: -90px;
+  left: 50%;
+  margin-left: -122.5px;
+  width: 245px;
+  transform-origin: center bottom;
+}
+
+.hero-image-bottle-wrapper img {
+  width: 100%;
+  transform: translateY(100%) rotate(15deg);
+}
+
+.hero-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .nav-items { display: none; } /* Hide standard nav items */
+  .hamburger { display: flex; } /* Show hamburger trigger */
+  .hero-footer { display: none; } /* Hide bottom texts on smaller screens */
+  
+  .hero-header { width: 95%; }
+  .hero-image {
+    width: 340px;
+    height: 380px;
+  }
+  .hero-image-background {
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    bottom: -80px;
+  }
+  .hero-image-bottle-wrapper {
+    width: 150px;
+    margin-left: -75px;
+    bottom: -60px;
+  }
+  .hero-image-bottle-wrapper img {
+    width: 100%;
+  }
+  .item { width: 95px; height: 95px; }
+}
+
+@media (max-width: 480px) {
+  .hero-image {
+    width: 260px;
+    height: 320px;
+  }
+  .hero-image-background {
+    width: 240px;
+    height: 240px;
+    margin-left: -120px;
+    bottom: -60px;
+  }
+  .hero-image-bottle-wrapper {
+    width: 120px;
+    margin-left: -60px;
+    bottom: -45px;
+  }
+  .item { width: 75px; height: 75px; }
+}
