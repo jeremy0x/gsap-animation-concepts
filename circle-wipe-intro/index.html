@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circle Wipe Intro</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="../assets/site.webmanifest" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Preloader / Intro Sequence -->
+    <div class="preloader">
+      <div class="preloader-background"></div>
+
+      <!-- Colored circle wipe panels -->
+      <div class="preloader-revealer revealer-1"></div>
+      <div class="preloader-revealer revealer-2"></div>
+      <div class="preloader-revealer revealer-3"></div>
+      <div class="preloader-revealer revealer-4"></div>
+
+      <!-- Intro floating food items -->
+      <div class="items">
+        <div class="item item-1">
+          <img src="assets/chilli.webp" alt="Food 1" />
+        </div>
+        <div class="item item-2">
+          <img src="assets/cherry.webp" alt="Food 2" />
+        </div>
+        <div class="item item-3">
+          <img src="assets/onion.webp" alt="Food 3" />
+        </div>
+        <div class="item item-4">
+          <img src="assets/pineapple.webp" alt="Food 4" />
+        </div>
+        <div class="item item-5">
+          <img src="assets/garlic.webp" alt="Food 5" />
+        </div>
+        <div class="item item-6">
+          <img src="assets/habanero.webp" alt="Food 6" />
+        </div>
+      </div>
+
+      <div class="preloader-logo">
+        <img src="../assets/apple-touch-icon.png" alt="Logo" />
+      </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav>
+      <div class="nav-logo">
+        <a
+          href="../"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+          "
+        >
+          <img
+            src="../assets/apple-touch-icon.png"
+            alt="Logo"
+            style="width: 24px; height: 24px"
+          />
+          <span>010101</span>
+        </a>
+      </div>
+      <div class="nav-items">
+        <a href="../circle-wipe-intro/">NEBULA</a>
+        <a href="../curtain-reveal/">ATLAS</a>
+        <a href="../card-shuffle-reveal/">ORBIT</a>
+        <a href="../curtain-reveal/">PULSE</a>
+        <a href="../card-shuffle-reveal/">QUASAR</a>
+      </div>
+      <button class="hamburger" aria-label="Toggle Menu">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+      </button>
+    </nav>
+
+    <!-- Full-Screen Mobile Menu Overlay -->
+    <div class="mobile-menu">
+      <div class="mobile-menu-background"></div>
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-items">
+          <a href="../circle-wipe-intro/">NEBULA</a>
+          <a href="../curtain-reveal/">ATLAS</a>
+          <a href="../card-shuffle-reveal/">ORBIT</a>
+          <a href="../curtain-reveal/">PULSE</a>
+          <a href="../card-shuffle-reveal/">QUASAR</a>
+        </div>
+        <div class="mobile-menu-footer">
+          <p>NEBULA &middot; ATLAS &middot; ORBIT</p>
+          <p>GSAP MOTION CONCEPTS 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section (Reveals underneath) -->
+    <section class="hero">
+      <div class="hero-header">
+        <h1>EXPERIMENTAL CONCEPT</h1>
+      </div>
+
+      <div class="hero-image">
+        <div class="hero-image-background"></div>
+        <div class="hero-image-bottle-wrapper">
+          <img src="assets/ice-cream.png" alt="Main Product" />
+        </div>
+      </div>
+
+      <div class="hero-footer">
+        <p>NEBULA &middot; ATLAS &middot; ORBIT</p>
+        <p>GSAP MOTION CONCEPTS 2026</p>
+      </div>
+    </section>
+
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="../assets/SplitText.min.js"></script>
+    <script src="../assets/cursor.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -235,12 +235,18 @@ document.fonts.ready.then(() => {
     x: deltaX,
     y: deltaY,
     scale: targetScale,
-    duration: 0.8,
+    opacity: 0,
+    duration: 0.9,
     ease: "power3.inOut"
   }, "exit");
 
-  tl.set(".nav-logo", { opacity: 1 }, "exit+=0.8");
-  tl.set(".preloader-logo", { display: "none" }, "exit+=0.8");
+  tl.fromTo(".nav-logo",
+    { opacity: 0, x: -8 },
+    { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
+    "exit+=0.4"
+  );
+
+  tl.set(".preloader-logo", { display: "none" }, "exit+=0.9");
 
   tl.to(splitNav.words, {
     yPercent: 0,

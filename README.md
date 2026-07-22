@@ -3,7 +3,7 @@
   <img src="https://jeremy0x.vercel.app/logo.png" alt="" width=100>
   </p>
 
-  <h3 align="center">GSAP Animation Concepts</h3>
+  <h3 align="center">GSAP Experiments</h3>
 
   <p align="center">
     A personal playground and practice repository for exploring GreenSock Animation Platform (GSAP) concepts, timeline workflows, and interactive motion design.

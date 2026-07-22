@@ -1,127 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GSAP Animation Concepts</title>
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:opsz@8..56&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP Experiments</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:opsz@8..56&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cursor-dot"></div>
 
-  <div class="cursor-dot"></div>
+    <header>
+      <img src="https://jeremy0x.vercel.app/logo-icon.svg" alt="" class="header-mark" style="filter: brightness(0); opacity: 0.85" />
+      <span class="header-label">010101</span>
+      <a href="https://github.com/jeremy0x" class="header-github" target="_blank" rel="noopener">jeremy0x →</a>
+    </header>
 
-  <header>
-    <img src="https://jeremy0x.vercel.app/logo-icon.svg" alt="" class="header-mark">
-    <span class="header-label">GSAP Animation Concepts</span>
-    <a href="https://github.com/jeremy0x" class="header-github" target="_blank" rel="noopener">jeremy0x →</a>
-  </header>
+    <main>
+      <section class="hero">
+        <h1 class="hero-title">GSAP Experiments</h1>
+        <p class="hero-sub">explorations in motion</p>
+      </section>
 
-  <main>
-    <section class="hero">
-      <h1 class="hero-title">GSAP Animation Concepts</h1>
-      <p class="hero-sub">explorations in motion</p>
-    </section>
+      <section class="projects" id="projects"></section>
+    </main>
 
-    <section class="projects" id="projects"></section>
-  </main>
+    <footer>
+      <p>&copy; 2026 <a href="https://github.com/jeremy0x" target="_blank" rel="noopener">jeremy0x</a> &middot; GSAP Experiments</p>
+    </footer>
 
-  <footer>
-    <p><a href="https://github.com/jeremy0x" target="_blank" rel="noopener">jeremy0x</a> &middot; GSAP Animation Concepts</p>
-  </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="assets/SplitText.min.js"></script>
+    <script src="assets/cursor.js"></script>
+    <script>
+      gsap.registerPlugin(SplitText);
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="assets/SplitText.min.js"></script>
-  <script>
-    gsap.registerPlugin(SplitText);
+      const projects = [
+        {
+          id: "01",
+          title: "Circle Wipe Intro",
+          desc: "Brand intro sequence with floating food items, radial circle wipe reveals, and interactive navigation.",
+          href: "circle-wipe-intro/index.html",
+        },
+        {
+          id: "02",
+          title: "Curtain Reveal",
+          desc: "Curtain reveal with a fanned image stack, vertical wipe, and random char stagger.",
+          href: "curtain-reveal/index.html",
+        },
+        {
+          id: "03",
+          title: "Card Shuffle Reveal",
+          desc: "Radial card deck preloader, horizontal toss reveal, and expanding typography hero.",
+          href: "card-shuffle-reveal/index.html",
+        },
+      ];
 
-    const dot = document.querySelector('.cursor-dot');
-    const moveX = gsap.quickTo(dot, 'x', { duration: 0.4, ease: 'power2.out' });
-    const moveY = gsap.quickTo(dot, 'y', { duration: 0.4, ease: 'power2.out' });
+      const container = document.getElementById("projects");
 
-    document.addEventListener('mousemove', e => {
-      moveX(e.clientX);
-      moveY(e.clientY);
-    });
+      projects.forEach((p) => {
+        const row = document.createElement("a");
+        row.className = "project-row";
+        row.href = p.href;
 
-    const projects = [
-      {
-        id: '01',
-        title: 'Bucks Sauce Intro',
-        desc: 'Brand intro with floating food items, circle wipe transitions, and an interactive mobile menu.',
-        href: 'bucks-sauce-intro/index.html'
-      },
-      {
-        id: '02',
-        title: 'Curtain Reveal',
-        desc: 'Archive-themed curtain reveal with a fanned image stack, vertical wipe, and random char stagger.',
-        href: 'curtain-reveal/index.html'
-      }
-    ];
+        row.innerHTML = `
+          <span class="project-number">${p.id}</span>
+          <div class="project-info">
+            <h2 class="project-title">${p.title}<span class="project-arrow">→</span></h2>
+            <p class="project-desc">${p.desc}</p>
+          </div>
+        `;
 
-    const container = document.getElementById('projects');
+        container.appendChild(row);
 
-    projects.forEach((p, i) => {
-      const row = document.createElement('a');
-      row.className = 'project-row';
-      row.href = p.href;
+        row.addEventListener("mouseenter", () => {
+          gsap.to(row.querySelector(".project-title"), { x: 12, duration: 0.4, ease: "power2.out" });
+          gsap.to(row.querySelector(".project-arrow"), { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" });
+        });
 
-      row.innerHTML = `
-        <span class="project-number">${p.id}</span>
-        <div class="project-info">
-          <h2 class="project-title">${p.title}<span class="project-arrow"> →</span></h2>
-          <p class="project-desc">${p.desc}</p>
-        </div>
-      `;
-
-      container.appendChild(row);
-
-      row.addEventListener('mouseenter', () => {
-        gsap.to(row.querySelector('.project-title'), { x: 12, duration: 0.4, ease: 'power2.out' });
-        gsap.to(row.querySelector('.project-arrow'), { opacity: 1, x: 0, duration: 0.4, ease: 'power2.out' });
+        row.addEventListener("mouseleave", () => {
+          gsap.to(row.querySelector(".project-title"), { x: 0, duration: 0.4, ease: "power2.out" });
+          gsap.to(row.querySelector(".project-arrow"), { opacity: 0, x: -8, duration: 0.4, ease: "power2.out" });
+        });
       });
 
-      row.addEventListener('mouseleave', () => {
-        gsap.to(row.querySelector('.project-title'), { x: 0, duration: 0.4, ease: 'power2.out' });
-        gsap.to(row.querySelector('.project-arrow'), { opacity: 0, x: -8, duration: 0.4, ease: 'power2.out' });
+      document.addEventListener("DOMContentLoaded", () => {
+        const splitHero = new SplitText(".hero-title", { type: "chars", charsClass: "hero-char" });
+
+        gsap.set("header", { opacity: 0, y: -15 });
+        gsap.set(splitHero.chars, { yPercent: 100, opacity: 0 });
+        gsap.set(".hero-sub", { opacity: 0, y: 15 });
+        gsap.set(".project-row", { opacity: 0, y: 25 });
+        gsap.set("footer", { opacity: 0 });
+
+        function animateIn() {
+          const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+          tl.to("header", { opacity: 1, y: 0, duration: 0.7 })
+            .to(splitHero.chars, { yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.025 }, "-=0.4")
+            .to(".hero-sub", { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
+            .to(".project-row", { opacity: 1, y: 0, duration: 0.6, stagger: 0.08 }, "-=0.2")
+            .to("footer", { opacity: 1, duration: 0.6 }, "-=0.3");
+        }
+
+        if (document.fonts) {
+          document.fonts.ready.then(animateIn);
+        } else {
+          animateIn();
+        }
       });
-    });
-
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => gsap.to(dot, { scale: 4, duration: 0.25, ease: 'power2.out', overwrite: 'auto' }));
-      el.addEventListener('mouseleave', () => gsap.to(dot, { scale: 1, duration: 0.25, ease: 'power2.out', overwrite: 'auto' }));
-    });
-
-    const splitHero = new SplitText(".hero-title", { type: "chars", charsClass: "hero-char" });
-
-    gsap.set(splitHero.chars, { yPercent: 100, opacity: 0 });
-
-    function animateIn() {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      tl.to(splitHero.chars, { yPercent: 0, opacity: 1, duration: 1.0, stagger: 0.025, ease: 'power2.out' })
-        .from('.hero-sub', { y: 30, opacity: 0, duration: 0.8 }, '-=0.4')
-        .from('.project-row', {
-          y: 60,
-          opacity: 0,
-          duration: 0.9,
-          stagger: 0.15,
-          ease: 'power2.out'
-        }, '-=0.3')
-        .from('footer', { opacity: 0, duration: 0.6 }, '-=0.2');
-    }
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(animateIn);
-    } else {
-      animateIn();
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
