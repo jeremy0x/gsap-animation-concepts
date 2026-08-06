@@ -1,0 +1,351 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Navigation Bar - Initial hidden state prevents initial flash */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  mix-blend-mode: difference;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-brand-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: opacity 0.25s ease;
+}
+
+.nav-brand:hover {
+  opacity: 0.75;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-center {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  opacity: 0.85;
+}
+
+.nav-center a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.nav-center a:hover,
+.nav-center a.active {
+  opacity: 1;
+  color: #fa04f9;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-menu a:hover {
+  opacity: 0.7;
+}
+
+/* Floating Replay Sequence Control */
+.replay-control {
+  position: fixed;
+  bottom: 2.2rem;
+  right: 3rem;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#replay-btn {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 40px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#replay-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(255, 255, 255, 0.15);
+}
+
+#replay-btn:active {
+  transform: translateY(0);
+}
+
+#replay-btn svg {
+  transition: transform 0.4s ease;
+}
+
+#replay-btn:hover svg {
+  transform: rotate(180deg);
+}
+
+/* Container Canvas */
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hero Container Wrap */
+.hero-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  text-align: center;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+/* Background Kinetic Text Header */
+h1.header {
+  font-family: "Bigilla", "Syne", "Space Grotesk", sans-serif !important;
+  font-size: clamp(36px, 9.5vw, 140px);
+  text-transform: uppercase;
+  font-weight: 300;
+  width: 100%;
+  text-align: center;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.header .letter {
+  display: inline-block;
+  line-height: 1em;
+  will-change: transform, opacity;
+  opacity: 0;
+  transform: translateY(80px);
+}
+
+/* Small Subtext below EXPERIMENTAL */
+.hero-subtext {
+  font-family: "Space Grotesk", monospace;
+  font-size: clamp(10px, 1.2vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  opacity: 0;
+  will-change: transform, opacity;
+  transform: translateY(20px);
+}
+
+/* Center Staggered Titles - Perfectly Centered & Responsive */
+.titles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  will-change: transform, opacity;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title h1 {
+  font-weight: 500;
+  font-size: clamp(32px, 6vw, 90px);
+  font-family: "Barracuda", "Syne", "Space Grotesk", sans-serif !important;
+  text-align: center;
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  margin: 0 auto;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+/* Stagger Block Lines - Initial transform prevents flash before animation */
+ul.blocks {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+li.block {
+  height: 100vh;
+  will-change: transform;
+  transform: translateX(-1600px);
+}
+
+.block-1 {
+  width: 0.2%;
+  margin: 0 10px;
+  background: #da0510;
+}
+
+.block-2 {
+  width: 1.4%;
+  margin: 0 200px 0 20px;
+  background: #2001fe;
+}
+
+.block-3 {
+  width: 0.8%;
+  margin: 0 40px;
+  background: #01fefe;
+}
+
+.block-4 {
+  width: 2%;
+  margin: 0 400px;
+  background: #00fe00;
+}
+
+.block-5 {
+  width: 0.8%;
+  margin: 0 20px;
+  background: #f4f315;
+}
+
+.block-6 {
+  width: 2.8%;
+  background: #fa04f9;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 1200px) {
+  h1.header {
+    font-size: clamp(42px, 8.5vw, 120px);
+  }
+  .title h1 {
+    font-size: clamp(28px, 5.5vw, 80px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    padding: 1.5rem 2rem;
+  }
+  .block-2 {
+    margin: 0 100px 0 15px;
+  }
+  .block-4 {
+    margin: 0 200px;
+  }
+  h1.header {
+    font-size: clamp(36px, 7.5vw, 100px);
+  }
+  .title h1 {
+    font-size: clamp(24px, 5vw, 70px);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 1.25rem 1.5rem;
+  }
+  .nav-center {
+    display: none;
+  }
+  .block-2 {
+    margin: 0 50px 0 10px;
+  }
+  .block-4 {
+    margin: 0 80px;
+  }
+  .title h1 {
+    font-size: clamp(20px, 4.5vw, 55px);
+  }
+}
